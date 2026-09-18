@@ -12,7 +12,7 @@
   "navigationDividerColorDark": "#000000",
   "backgroundColor": "#003241",
   "enableNotifications": true,
-  "startUrl": "/?appv=9",
+  "startUrl": "/?appv=10",
   "iconUrl": "https://centrocristianojordan.com/icons/icon-512.png",
   "maskableIconUrl": "https://centrocristianojordan.com/icons/icon-maskable-512.png",
   "splashScreenFadeOutDuration": 300,
@@ -20,8 +20,8 @@
     "path": "C:/Users/jorge/keys/jordan-android.keystore",
     "alias": "jordan"
   },
-  "appVersionName": "9",
-  "appVersionCode": 9,
+  "appVersionName": "10",
+  "appVersionCode": 10,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://centrocristianojordan.com/manifest.json",
@@ -43,5 +43,5 @@
   "fileHandlers": [],
   "launchHandlerClientMode": "",
   "displayOverride": [],
-  "appVersion": "9"
+  "appVersion": "10"
 }

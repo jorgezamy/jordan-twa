@@ -31,6 +31,16 @@ $raw = $raw -replace '"startUrl":\s*"[^"]*"', "`"startUrl`": `"/?appv=$next`""
 # UTF-8 sin BOM: con BOM, Bubblewrap no puede leer el JSON.
 [System.IO.File]::WriteAllText($manifestPath, $raw, $utf8)
 
+# Suelta bloqueos de una corrida anterior (un Gradle vivo o OneDrive sincronizando
+# app\build causan "EBUSY: resource busy or locked" en `bubblewrap update`).
+if (Test-Path ".\gradlew.bat") {
+    $env:JAVA_HOME = ([System.IO.File]::ReadAllText("$env:USERPROFILE\.bubblewrap\config.json") | ConvertFrom-Json).jdkPath
+    & .\gradlew.bat --stop | Out-Null
+}
+foreach ($d in "app\build", "build", ".gradle") {
+    if (Test-Path $d) { Remove-Item $d -Recurse -Force -ErrorAction SilentlyContinue }
+}
+
 # `update` regenera el proyecto Android y sube appVersionCode a $next.
 bubblewrap update
 if ($LASTEXITCODE -ne 0) { throw "bubblewrap update fallo." }

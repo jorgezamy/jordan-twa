@@ -23,9 +23,9 @@ plugins {
 def twaManifest = [
     applicationId: 'com.centrocristianojordan.app',
     hostName: 'www.centrocristianojordan.com', // The domain being opened in the TWA.
-    launchUrl: '/?appv=9', // The start path for the TWA. Must be relative to the domain.
-    name: 'Centro Cristiano JordÃƒÂ¡n', // The application name.
-    launcherName: 'JordÃƒÂ¡n', // The name shown on the Android Launcher.
+    launchUrl: '/?appv=10', // The start path for the TWA. Must be relative to the domain.
+    name: 'Centro Cristiano Jordán', // The application name.
+    launcherName: 'Jordán', // The name shown on the Android Launcher.
     themeColor: '#003241', // The color used for the status bar.
     themeColorDark: '#000000', // The color used for the dark status bar.
     navigationColor: '#000000', // The color used for the navigation bar.
@@ -57,8 +57,8 @@ android {
         applicationId "com.centrocristianojordan.app"
         minSdkVersion 21
         targetSdkVersion 36
-        versionCode 9
-        versionName "9"
+        versionCode 10
+        versionName "10"
 
         // The name for the application
         resValue "string", "appName", twaManifest.name
@@ -81,7 +81,7 @@ android {
 
         
             // This is used by Meta Quest.
-            resValue "string", "fullScopeUrl", 'https://centrocristianojordan.com/'
+            resValue "string", "fullScopeUrl", 'https://www.centrocristianojordan.com/'
         
 
         
