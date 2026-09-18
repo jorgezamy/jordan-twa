@@ -1,0 +1,14 @@
+# Claves — nunca al repo
+*.keystore
+*.jks
+keystore.properties
+
+# Salida de builds
+build/
+app/build/
+.gradle/
+*.apk
+*.aab
+*.idsig
+local.properties
+hs_err_pid*.log
