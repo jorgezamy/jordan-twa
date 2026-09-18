@@ -19,6 +19,10 @@ Run `.\release.ps1` from PowerShell in this folder. It bumps `appVersionCode`, s
 - Never edit `appVersionCode`, `appVersion*` or `startUrl` by hand. The site (`jordan/src/components/appUpdate`)
   reads `?appv=` and compares it to `MIN_APP_VERSION` to force outdated app installs to update, so the URL
   number must always equal the versionCode.
+- **After every new `.aab`, ask the user whether to force this version** (i.e. raise `MIN_APP_VERSION` in
+  `jordan/src/components/appUpdate/constants.ts` to the new versionCode and push). It is never automatic. Only
+  worth forcing when the Android shell changed; do it only after Play shows the release as available, or users get
+  blocked with nothing to install.
 - The signing keystore is **not** in this repo (`.gitignore` blocks `*.keystore`/`*.jks`). It lives at
   `C:\Users\jorge\keys\jordan-android.keystore` (alias `jordan`), with a backup in the user's Drive.
   Never commit it, and never write passwords into any file.
