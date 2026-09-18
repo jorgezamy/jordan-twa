@@ -1,7 +1,8 @@
 # Genera un .aab nuevo para Play Store.
 #
 # Uso (PowerShell, desde esta carpeta):
-#   1. El keystore vive en C:\Users\jorge\keys\jordan-android.keystore
+#   1. El keystore vive donde diga signingKey.path en twa-manifest.json
+#      (hoy C:\Users\jorge\keys\jordan-android.keystore)
 #      (fuera de OneDrive y de git; la copia de respaldo esta en Drive).
 #   2. .\release.ps1
 #   3. Sube app-release-bundle.aab a Play Console.
@@ -14,8 +15,10 @@
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
-if (-not (Test-Path "C:\Users\jorge\keys\jordan-android.keystore")) {
-    throw "Falta C:\Users\jorge\keys\jordan-android.keystore (copialo de Drive una sola vez)."
+# La ruta del keystore sale de twa-manifest.json (signingKey.path), no esta fija aqui.
+$ksPath = ([System.IO.File]::ReadAllText((Join-Path $PSScriptRoot "twa-manifest.json")) | ConvertFrom-Json).signingKey.path
+if (-not (Test-Path $ksPath)) {
+    throw "No existe el keystore en $ksPath (copialo de Drive, o corrige signingKey.path en twa-manifest.json)."
 }
 
 $manifestPath = Join-Path $PSScriptRoot "twa-manifest.json"
